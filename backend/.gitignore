@@ -1,0 +1,26 @@
+# Переменные окружения
+.env
+
+# Виртуальное окружение Python
+.venv
+venv
+
+# Временные файлы Python и Django
+__pycache__
+*.py[cod]
+*$py.class
+
+# Статика
+staticfiles
+static_files
+media
+
+# Файлы БД
+data
+.data
+# Файлы логов
+logs
+
+# IDE
+.idea
+.vscode

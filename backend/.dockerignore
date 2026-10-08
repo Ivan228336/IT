@@ -1,0 +1,17 @@
+docker
+!docker/entrypoint.sh
+!docker/version
+!docker/nginx/conf/nginx.conf
+.data
+data
+media
+certs
+bin
+
+.venv/
+venv/
+
+static_files
+staticfiles
+frontend/node_modules
+frontend/static
