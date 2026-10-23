@@ -1,1 +1,28 @@
-<p>login-component works!</p>
+<div class="auth-out">
+  <div class="auth-container">
+    <h1>Вход</h1>
+    <form class="form" [formGroup]="form">
+      <div class="form-input_group">
+        <label class="form-label">Почта:</label>
+        <input
+          class="form-input"
+          formControlName="email"
+          placeholder="Введите почту"
+        />
+      </div>
+      <div class="form-input_group">
+        <label class="form-label">Пароль:</label>
+        <input
+          class="form-input"
+          formControlName="password"
+          placeholder="Введите пароль"
+        />
+      </div>
+      <button class="form-button" [disabled]="form.invalid">Войти</button>
+    </form>
+    <span style="text-align: center; font-size: 0.85rem">
+      Нет аккаунта?
+      <a routerLink="/auth/register">Зарегистрироваться</a>
+    </span>
+  </div>
+</div>
