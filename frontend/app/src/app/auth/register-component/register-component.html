@@ -1,0 +1,46 @@
+<div class="auth-out">
+  <div class="auth-container">
+    <h1>Регистрация</h1>
+    <form class="form" [formGroup]="form">
+      <div class="form-input_group">
+        <label class="form-label">Никнейм:</label>
+        <input
+          class="form-input"
+          formControlName="username"
+          placeholder="Введите никнейм"
+        />
+      </div>
+      <div class="form-input_group">
+        <label class="form-label">Почта:</label>
+        <input
+          class="form-input"
+          formControlName="email"
+          placeholder="Введите почту"
+        />
+      </div>
+      <div class="form-input_group">
+        <label class="form-label">Пароль:</label>
+        <input
+          class="form-input"
+          formControlName="password"
+          placeholder="Введите пароль"
+        />
+      </div>
+      <div class="form-input_group">
+        <label class="form-label">Повторный пароль:</label>
+        <input
+          class="form-input"
+          formControlName="confirmPassword"
+          placeholder="Повторите пароль"
+        />
+      </div>
+      <button class="form-button" [disabled]="form.invalid">
+        Зарегистрироваться
+      </button>
+    </form>
+    <span style="text-align: center; font-size: 0.85rem">
+      Уже есть аккаунт?
+      <a routerLink="/auth/login">Войти</a>
+    </span>
+  </div>
+</div>
