@@ -1,7 +1,7 @@
 <div class="auth-out">
   <div class="auth-container">
     <h1>Регистрация</h1>
-    <form class="form" [formGroup]="form">
+    <form class="form" [formGroup]="form" (ngSubmit)="onClick()">
       <div class="form-input_group">
         <label class="form-label">Никнейм:</label>
         <input
@@ -34,7 +34,7 @@
           placeholder="Повторите пароль"
         />
       </div>
-      <button class="form-button" [disabled]="form.invalid">
+      <button type="submit" class="form-button" [disabled]="form.invalid">
         Зарегистрироваться
       </button>
     </form>

@@ -17,4 +17,10 @@ export class RegisterComponent {
     password: ['', [Validators.required]],
     confirmPassword: ['', [Validators.required]],
   });
+
+  onClick() {
+    if (this.form.valid) {
+      console.log(this.form.value);
+    }
+  }
 }
