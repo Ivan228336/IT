@@ -4,7 +4,7 @@ services:
   db:
     image: postgis/postgis:15-3.5-alpine
     hostname: db
-    container_name: sinx_db
+    container_name: it_db
     volumes:
       - .data/db:/var/lib/postgresql/data
     env_file:
@@ -23,7 +23,7 @@ services:
     build:
       context: ./
       dockerfile: ./docker/Dockerfile
-    container_name: sinx_backend
+    container_name: it_backend
     volumes:
       - .:/opt
     ports:
@@ -46,7 +46,7 @@ services:
       
   redis:
     image: redis:8.0-alpine
-    container_name: sinx_redis
+    container_name: it_redis
     volumes:
       - redis_data:/data
     env_file:
@@ -64,7 +64,7 @@ services:
       context: ./
       dockerfile: ./docker/Dockerfile
     command: celery -A config worker -l INFO
-    container_name: sinx_celery
+    container_name: it_celery
     volumes:
       - .:/opt
     depends_on:

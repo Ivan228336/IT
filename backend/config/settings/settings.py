@@ -226,7 +226,7 @@ CACHES = {
     },
     "blacklist": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/2", 
+        "LOCATION": env.str("REDIS_BLACKLIST_LOCATION", default="redis://redis:6379/1"),  # "redis://127.0.0.1:6379/2", 
     },
 }
 

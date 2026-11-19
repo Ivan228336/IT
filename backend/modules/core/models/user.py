@@ -6,27 +6,27 @@ from pydantic import BaseModel
 from modules.auth_service.models import UserAuthServiceModel
 
 
-def default_statistics():
-    return {
-        "created": {"places": 0, "events": 0, "routes": 0},
-        "published": {"places": 0, "events": 0, "routes": 0},
-        "visited": {"places": 0, "events": 0, "routes": 0},
-    }
+# def default_statistics():
+#     return {
+#         "created": {"places": 0, "events": 0, "routes": 0},
+#         "published": {"places": 0, "events": 0, "routes": 0},
+#         "visited": {"places": 0, "events": 0, "routes": 0},
+#     }
 
 
-class CategoryStatisticsSchema(BaseModel):
-    places: int = 0
-    events: int = 0
-    routes: int = 0
+# class CategoryStatisticsSchema(BaseModel):
+#     places: int = 0
+#     events: int = 0
+#     routes: int = 0
 
 
-class UserStatisticsSchema(BaseModel):
-    created: CategoryStatisticsSchema = CategoryStatisticsSchema()
-    published: CategoryStatisticsSchema = CategoryStatisticsSchema()
-    visited: CategoryStatisticsSchema = CategoryStatisticsSchema()
+# class UserStatisticsSchema(BaseModel):
+#     created: CategoryStatisticsSchema = CategoryStatisticsSchema()
+#     published: CategoryStatisticsSchema = CategoryStatisticsSchema()
+#     visited: CategoryStatisticsSchema = CategoryStatisticsSchema()
 
-    def to_dict(self) -> dict:
-        return self.model_dump()
+#     def to_dict(self) -> dict:
+#         return self.model_dump()
 
 
 class CustomUserAuthManager(BaseUserManager["User"]):
@@ -54,28 +54,28 @@ class CustomUserAuthManager(BaseUserManager["User"]):
 
 
 class User(UserAuthServiceModel):
-    age = models.IntegerField(
-        validators=[
-            MinValueValidator(0, "Возраст не может быть отрицательным"),
-            MaxValueValidator(99, "Максимальный возраст 99 лет"),
-        ],
-        blank=True,
-        null=True,
-        verbose_name="Возраст пользователя",
-    )
+    # age = models.IntegerField(
+    #     validators=[
+    #         MinValueValidator(0, "Возраст не может быть отрицательным"),
+    #         MaxValueValidator(99, "Максимальный возраст 99 лет"),
+    #     ],
+    #     blank=True,
+    #     null=True,
+    #     verbose_name="Возраст пользователя",
+    # )
 
-    status = models.CharField(
-        max_length=70,
-        blank=True,
-        null=True,
-        verbose_name="Статус пользователя",
-    )
+    # status = models.CharField(
+    #     max_length=70,
+    #     blank=True,
+    #     null=True,
+    #     verbose_name="Статус пользователя",
+    # )
 
-    statistics = models.JSONField(
-        default=UserStatisticsSchema().to_dict,
-        blank=True,
-        verbose_name="Статистика пользователя",
-    )
+    # statistics = models.JSONField(
+    #     default=UserStatisticsSchema().to_dict,
+    #     blank=True,
+    #     verbose_name="Статистика пользователя",
+    # )
 
     photo = models.ImageField(blank=True, null=True, upload_to="users/photos/%Y/%m/%d/", verbose_name="Фото профиля")
 
@@ -85,13 +85,13 @@ class User(UserAuthServiceModel):
 
     custom_object_auth_manager = CustomUserAuthManager()
 
-    @property
-    def statistics_schema(self) -> UserStatisticsSchema:
-        return UserStatisticsSchema(**self.statistics)
+    # @property
+    # def statistics_schema(self) -> UserStatisticsSchema:
+    #     return UserStatisticsSchema(**self.statistics)
 
-    @statistics_schema.setter
-    def statistics_schema(self, value: UserStatisticsSchema) -> None:
-        self.statistics = value.model_dump()
+    # @statistics_schema.setter
+    # def statistics_schema(self, value: UserStatisticsSchema) -> None:
+    #     self.statistics = value.model_dump()
 
     def __str__(self):
         return f"{self.email}"
