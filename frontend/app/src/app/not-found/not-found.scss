@@ -1,0 +1,21 @@
+.not_found {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    gap: 1rem;
+
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+
+    box-shadow: 0px 10px 11px 0px rgba(34, 60, 80, 0.3);
+  }
+  &-out {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+  }
+}

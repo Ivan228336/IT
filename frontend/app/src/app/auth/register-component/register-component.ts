@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../shared/services/auth-service';
 import { UserRegister } from '../../shared/services/auth-service.types';
 
@@ -13,6 +13,7 @@ import { UserRegister } from '../../shared/services/auth-service.types';
 export class RegisterComponent {
   private fb = inject(FormBuilder);
   private auth = inject(AuthService);
+  private router = inject(Router);
 
   form = this.fb.group({
     username: ['', [Validators.required]],
@@ -29,7 +30,11 @@ export class RegisterComponent {
         password: this.form.value.password!,
         confirm_password: this.form.value.confirmPassword!,
       };
-      this.auth.register(body);
+      this.auth.register(body).subscribe({
+        next: () => {
+          this.router.navigate(['/login']);
+        },
+      });
     }
   }
 }

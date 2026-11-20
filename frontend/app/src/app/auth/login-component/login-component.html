@@ -1,7 +1,7 @@
 <div class="auth-out">
   <div class="auth-container">
     <h1>Вход</h1>
-    <form class="form" [formGroup]="form">
+    <form class="form" [formGroup]="form" (ngSubmit)="onClick()">
       <div class="form-input_group">
         <label class="form-label">Почта:</label>
         <input
@@ -18,7 +18,9 @@
           placeholder="Введите пароль"
         />
       </div>
-      <button class="form-button" [disabled]="form.invalid">Войти</button>
+      <button class="form-button" [disabled]="form.invalid" type="submit">
+        Войти
+      </button>
     </form>
     <span style="text-align: center; font-size: 0.85rem">
       Нет аккаунта?
